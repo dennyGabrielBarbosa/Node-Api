@@ -3,7 +3,8 @@ import livroControler from "../controller/livrosControler.js";
 
 const router = express.Router();
 
-router 
-    .get("/livros", livroControler.listarLivros);
+router
+    .get("/livros", livroControler.listarLivros)
+    .post("/livros", livroControler.cadastrarLivro);
 
 export default router;
