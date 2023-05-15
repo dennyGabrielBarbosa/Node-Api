@@ -6,10 +6,10 @@ class AutorControler {
         autores.find((err, autores) => {
             res.status(200).json(autores);
         });
-    }
+    };
 
     static listarAutorPorId = (req, res) => {
-        const id = req.params.id
+        const id = req.params.id;
 
         autores.findById(id, (err, autores) => {
             if (err) {
@@ -17,8 +17,8 @@ class AutorControler {
             } else {
                 res.status(200).send(autores);
             }
-        })
-    }
+        });
+    };
 
     static cadastrarAutor = (req, res) => {
         let autor = new autores(req.body);
@@ -30,31 +30,31 @@ class AutorControler {
                 res.status(201).send(autor.toJSON());
             }
         });
-    }
+    };
 
     static atualizarAutor = (req, res) => {
-        const id = req.params.id
+        const id = req.params.id;
 
         autores.findByIdAndUpdate(id, { $set: req.body }, (err) => {
             if (!err) {
-                res.status(200).send({ message: 'Autor atualizado com sucesso' })
+                res.status(200).send({ message: "Autor atualizado com sucesso" });
             } else {
-                res.status(500).send({ message: err.message })
+                res.status(500).send({ message: err.message });
             }
-        })
-    }
+        });
+    };
 
     static excluirAutor = (req, res) => {
-        const id = req.params.id
+        const id = req.params.id;
 
         autores.findByIdAndDelete(id, (err) => {
             if (!err) {
-                res.status(200).send({ message: 'Autor excluido com sucesso' })
+                res.status(200).send({ message: "Autor excluido com sucesso" });
             } else {
-                res.status(500).send({ message: err.message })
+                res.status(500).send({ message: err.message });
             }
-        })
-    }
+        });
+    };
 
 }
 export default AutorControler;
