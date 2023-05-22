@@ -97,8 +97,9 @@ function processaBusca(parametros) {
 
     if (editora) busca.editora = editora;
     if (titulo) busca.titulo = { $regex: titulo, $options: "i" };
-    if (minPaginas) busca.numeroPaginas = { $gte: minPaginas };
-    if (maxPaginas) busca.numeroPaginas = { $lte: maxPaginas };
+    if (minPaginas || maxPaginas) busca.numeroPaginas = {};
+    if (minPaginas) busca.numeroPaginas.$gte = minPaginas ;
+    if (maxPaginas) busca.numeroPaginas.$lte = maxPaginas ;
 
     return busca;
 }
